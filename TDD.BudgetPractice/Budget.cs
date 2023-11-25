@@ -2,7 +2,7 @@ namespace BudgetService;
 
 public class Budget
 {
-    public string YearMonth { get; set; }
+    public string YearMonth { get; set; } = null!;
     public int Amount { get; set; }
 
     public int GetYear()
@@ -19,5 +19,10 @@ public class Budget
     {
         var daysInMonth = DateTime.DaysInMonth(GetYear(), GetMonth());
         return Amount / daysInMonth;
+    }
+
+    public bool IsSameYearAndMonth(int year, int month)
+    {
+        return GetYear() == year && GetMonth() == month;
     }
 }

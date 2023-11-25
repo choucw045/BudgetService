@@ -17,7 +17,7 @@ public class BudgetService
             var budgets = _budgetRepo.GetAll();
             return validDaysCountByMonth.Select(c =>
             {
-                var budget = budgets.FirstOrDefault(b => b.GetYear() == c.year && b.GetMonth() == c.month);
+                var budget = budgets.FirstOrDefault(b => b.IsSameYearAndMonth(c.year, c.month));
                 var budgetPerDay = budget?.GetBudgetPerDay() ?? 0;
                 return budgetPerDay * c.dayCountOfMonth;
             }).Sum();
