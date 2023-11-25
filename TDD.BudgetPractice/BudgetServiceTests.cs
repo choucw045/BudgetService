@@ -3,18 +3,8 @@ using NSubstitute;
 
 namespace BudgetService;
 
-public class BudgetServiceTests
+public class DateRangeHelperTests
 {
-    private IBudgetRepo _budgetRepo;
-    private BudgetService _budgetService;
-
-    [SetUp]
-    public void Setup()
-    {
-        _budgetRepo = Substitute.For<IBudgetRepo>();
-        _budgetService = new BudgetService(_budgetRepo);
-    }
-
     [Test]
     public void TestPeriod()
     {
@@ -50,6 +40,19 @@ public class BudgetServiceTests
         valueTuples.First().dayCountOfMonth.Should().Be(17);
         valueTuples.Skip(1).First().dayCountOfMonth.Should().Be(28);
         valueTuples.Last().dayCountOfMonth.Should().Be(1);
+    }
+}
+
+public class BudgetServiceTests
+{
+    private IBudgetRepo _budgetRepo;
+    private BudgetService _budgetService;
+
+    [SetUp]
+    public void Setup()
+    {
+        _budgetRepo = Substitute.For<IBudgetRepo>();
+        _budgetService = new BudgetService(_budgetRepo);
     }
 
     [Test]
