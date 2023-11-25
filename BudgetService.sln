@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetService", "BudgetService\BudgetService.csproj", "{33C13DF3-EB95-4409-97A7-2EAAC112344F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDD.BudgetPractice", "TDD.BudgetPractice\TDD.BudgetPractice.csproj", "{33C13DF3-EB95-4409-97A7-2EAAC112344F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
