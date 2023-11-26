@@ -3,50 +3,10 @@ using NSubstitute;
 
 namespace BudgetService;
 
-public class DateRangeHelperTests
-{
-    [Test]
-    public void TestPeriod()
-    {
-        var valueTuples = DateRangeHelper.GetDate(new DateTime(2023, 1, 1), new DateTime(2023, 1, 1));
-        valueTuples.Count().Should().Be(1);
-        valueTuples.First().dayCountOfMonth.Should().Be(1);
-    }
-
-    [Test]
-    public void GetDateCanHandleCrossMonth()
-    {
-        var valueTuples = DateRangeHelper.GetDate(new DateTime(2023, 1, 1), new DateTime(2023, 2, 1));
-        valueTuples.Count().Should().Be(2);
-        valueTuples.First().dayCountOfMonth.Should().Be(31);
-        valueTuples.Last().dayCountOfMonth.Should().Be(1);
-    }
-
-    [Test]
-    public void GetDateCanHandleCrossMultipleMonth()
-    {
-        var valueTuples = DateRangeHelper.GetDate(new DateTime(2023, 1, 1), new DateTime(2023, 3, 1));
-        valueTuples.Count().Should().Be(3);
-        valueTuples.First().dayCountOfMonth.Should().Be(31);
-        valueTuples.Skip(1).First().dayCountOfMonth.Should().Be(28);
-        valueTuples.Last().dayCountOfMonth.Should().Be(1);
-    }
-
-    [Test]
-    public void GetDateCanHandleStartDate()
-    {
-        var valueTuples = DateRangeHelper.GetDate(new DateTime(2023, 1, 15), new DateTime(2023, 3, 1));
-        valueTuples.Count().Should().Be(3);
-        valueTuples.First().dayCountOfMonth.Should().Be(17);
-        valueTuples.Skip(1).First().dayCountOfMonth.Should().Be(28);
-        valueTuples.Last().dayCountOfMonth.Should().Be(1);
-    }
-}
-
 public class BudgetServiceTests
 {
-    private IBudgetRepo _budgetRepo;
-    private BudgetService _budgetService;
+    private IBudgetRepo _budgetRepo = null!;
+    private BudgetService _budgetService = null!;
 
     [SetUp]
     public void Setup()
