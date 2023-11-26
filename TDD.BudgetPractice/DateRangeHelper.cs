@@ -6,7 +6,7 @@ public class DateRangeHelper
     {
     }
 
-    public static IEnumerable<MonthlyDayCount> GetDate(DateTime start, DateTime end)
+    public static IEnumerable<MonthlyDayCount> SplitDaysCountByMonth(DateTime start, DateTime end)
     {
         if (start > end)
         {

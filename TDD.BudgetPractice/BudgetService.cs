@@ -14,13 +14,12 @@ public class BudgetService
         try
         {
             var budgets = _budgetRepo.GetAll();
-            var validDaysCountByMonth = DateRangeHelper.GetDate(start, end);
-            return validDaysCountByMonth.Select(c =>
+            return DateRangeHelper.SplitDaysCountByMonth(start, end).Sum(c =>
             {
                 var budget = budgets.FirstOrDefault(b => b.IsSameYearAndMonth(c.Year, c.Month));
                 var budgetPerDay = budget?.GetBudgetPerDay() ?? 0;
                 return budgetPerDay * c.DayCount;
-            }).Sum();
+            });
         }
         catch (InvalidDateRangeException)
         {
